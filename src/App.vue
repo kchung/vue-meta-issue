@@ -10,6 +10,27 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
+
+	metaInfo() {
+		return {
+			title: this.title,
+		};
+	},
+
+	data() {
+		return {
+			increment: 0,
+			title: 'test',
+		};
+	},
+
+	mounted() {
+		setInterval(() => {
+			// The title will *not* reactively update with 1.5.4
+			this.title = `title-${this.increment++}`;
+		}, 500);
+	},
+
   components: {
     HelloWorld
   }
